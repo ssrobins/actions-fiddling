@@ -28,5 +28,10 @@ jobs:
 
     - name: Install CMake
       run: |
-        wget https://github.com/Kitware/CMake/releases/download/v3.19.0-rc1/cmake-3.19.0-rc1-Darwin-x86_64.tar.gz
+        cmake_version=3.19.0-rc1
+        cmake_dir=cmake-${cmake_version}-Darwin-x86_64
+        cmake_zip=${cmake_dir}.tar.gz
+        wget --no-verbose https://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_zip}
+        tar xf ${cmake_zip}
+        cmake --version
         
