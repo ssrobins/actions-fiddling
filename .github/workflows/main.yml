@@ -16,24 +16,22 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: macos-10.15
+    runs-on: windows-2019
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    - name: List apps
-      run: ls -l /Applications
-
+    
     - name: Install CMake
       run: |
-        cmake_version=3.19.0-rc1
-        cmake_dir=cmake-${cmake_version}-Darwin-x86_64
-        cmake_zip=${cmake_dir}.tar.gz
-        wget --no-verbose https://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_zip}
-        tar xf ${cmake_zip}
-        echo "${GITHUB_WORKSPACE}/${cmake_dir}/CMake.app/Contents/bin" >> $GITHUB_PATH
+        $cmake_version = "3.19.0-rc1"
+        $cmake_dir = "cmake-${cmake_version}-win64-x64"
+        $cmake_zip = "${cmake_dir}.zip"
+        $ProgressPreference = 'SilentlyContinue'
+        Invoke-WebRequest https://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_zip} -outFile ${cmake_zip}
+        Expand-Archive -Path $cmake_zip
+        echo "${GITHUB_WORKSPACE}/${cmake_dir}/bin" >> $GITHUB_PATH
 
     - name: CMake version
       run: cmake --version
