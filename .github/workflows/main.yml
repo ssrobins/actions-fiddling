@@ -33,5 +33,6 @@ jobs:
         cmake_zip=${cmake_dir}.tar.gz
         wget --no-verbose https://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_zip}
         tar xf ${cmake_zip}
+        echo "${GITHUB_WORKSPACE}/${cmake_dir}/CMake.app/Contents/bin" >> $GITHUB_PATH
         cmake --version
         
