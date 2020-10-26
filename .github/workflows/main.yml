@@ -36,6 +36,9 @@ jobs:
         Expand-Archive -Path $cmake_zip
         echo "${Env:GITHUB_WORKSPACE}/${cmake_dir}/bin" >> ${Env:GITHUB_PATH}
 
+    - name: Print environment variables
+      run: env
+
     - name: CMake version
       run: cmake --version
         
