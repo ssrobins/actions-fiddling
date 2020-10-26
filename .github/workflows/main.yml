@@ -31,7 +31,7 @@ jobs:
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest https://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_zip} -outFile ${cmake_zip}
         Expand-Archive -Path $cmake_zip
-        dir ${GITHUB_WORKSPACE}/${cmake_dir}
+        echo "${GITHUB_WORKSPACE}/${cmake_dir}"
 
     - name: CMake version
       run: cmake --version
