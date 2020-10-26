@@ -34,8 +34,8 @@ jobs:
         $ProgressPreference = 'SilentlyContinue'
         Invoke-WebRequest https://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_zip} -outFile ${cmake_zip}
         Expand-Archive -Path $cmake_zip
-        dir ${Env:GITHUB_WORKSPACE}/${cmake_dir}
-        echo "${Env:GITHUB_WORKSPACE}/${cmake_dir}/bin" >> ${Env:GITHUB_PATH}
+        dir ${Env:GITHUB_WORKSPACE}/${cmake_dir}/${cmake_dir}
+        echo "${Env:GITHUB_WORKSPACE}/${cmake_dir}/${cmake_dir}/bin" >> ${Env:GITHUB_PATH}
 
     - name: Print environment variables
       run: env
