@@ -36,7 +36,6 @@ jobs:
       run: |
         pwd
         dir
-        dir ${GITHUB_WORKSPACE}/${cmake_dir}/bin
 
     - name: CMake version
       run: cmake --version
