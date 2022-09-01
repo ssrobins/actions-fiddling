@@ -39,7 +39,7 @@ jobs:
         cd include-what-you-use
         git checkout clang_14
         cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_PREFIX_PATH=/usr/lib/llvm-14/lib/cmake -B build
-        cmake --build build
+        cmake --build build --parallel
         sudo cmake --install build
         include-what-you-use --help
 
