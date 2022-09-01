@@ -35,6 +35,9 @@ jobs:
     - name: Install Conan
       run: pip3 install conan --pre --upgrade
 
+    - name: List bin dir
+      run: ls -l /usr/bin
+
     - name: Build and install Include what you use
       run: |
         sudo apt-get install libclang-${{ env.clang_version }}-dev -y
@@ -53,8 +56,5 @@ jobs:
       run: |
         git clone https://github.com/ssrobins/stackblox
         cd stackblox
-        cmake --preset androidarm64 -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use;-Xiwyu;--error_always" -B build_iwyu
+        cmake --preset androidarm64 -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use" -B build_iwyu
         cmake --build build_iwyu --parallel
-
-
-        
