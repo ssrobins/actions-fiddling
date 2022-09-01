@@ -50,8 +50,8 @@ jobs:
       run: |
         git clone https://github.com/ssrobins/stackblox
         cd stackblox
-        cmake --preset androidarm64 -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use;-Xiwyu;--error" -B build_iwyu
-        cmake --build build_iwyu
+        cmake --preset androidarm64 -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use;-Xiwyu;--error_always" -B build_iwyu
+        cmake --build build_iwyu --parallel
 
 
         
