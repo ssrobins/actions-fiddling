@@ -11,6 +11,9 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
+env:
+  clang_version: 12
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -34,11 +37,11 @@ jobs:
 
     - name: Build and install Include what you use
       run: |
-        sudo apt-get install libclang-14-dev -y
+        sudo apt-get install libclang-${{ env.clang_version }}-dev -y
         git clone https://github.com/include-what-you-use/include-what-you-use.git
         cd include-what-you-use
-        git checkout clang_14
-        cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_PREFIX_PATH=/usr/lib/llvm-14/lib/cmake -B build
+        git checkout clang_${{ env.clang_version }}
+        cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_PREFIX_PATH=/usr/lib/llvm-${{ env.clang_version }}/lib/cmake -B build
         cmake --build build --parallel
         sudo cmake --install build
         include-what-you-use --help
