@@ -23,9 +23,13 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: Clang info
+    - name: Include what you use
       run: |
-        which clang
-        clang --version
-        find /usr -name "*.cmake"
+        git clone https://github.com/include-what-you-use/include-what-you-use.git
+        cd include-what-you-use
+        cmake -G "Unix Makefiles" -DCMAKE_PREFIX_PATH=/usr/lib/llvm-14/lib/cmake -B build
+        cmake --build build
+        cmake --install build
+        include-what-you-use --help
+
         
