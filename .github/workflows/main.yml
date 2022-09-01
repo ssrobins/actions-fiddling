@@ -57,4 +57,6 @@ jobs:
         git clone https://github.com/ssrobins/stackblox
         cd stackblox
         cmake --preset androidarm64 -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use" -B build_iwyu
-        cmake --build build_iwyu --parallel
+        cmake --build build_iwyu --parallel > /tmp/iwyu.out
+        cat /tmp/iwyu.out
+        if grep -Fq "include-what-you-use reported diagnostics" /tmp/iwyu.out; then exit 1; fi
