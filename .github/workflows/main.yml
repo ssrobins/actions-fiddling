@@ -45,7 +45,7 @@ jobs:
         cd include-what-you-use
         git checkout clang_${{ env.clang_version }}
         cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=/usr/bin/clang-${{ env.clang_version }} -DCMAKE_CXX_COMPILER=/usr/bin/clang++-${{ env.clang_version }} -DCMAKE_PREFIX_PATH=/usr/lib/llvm-${{ env.clang_version }}/lib/cmake -B build
-        cmake --build build --parallel
+        cmake --build build --config Release --parallel
         sudo cmake --install build
         include-what-you-use --help
 
@@ -57,7 +57,4 @@ jobs:
         git clone https://github.com/ssrobins/stackblox
         cd stackblox
         git checkout setup_iwyu
-        cmake --preset androidarm64 -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE="include-what-you-use" -B build_iwyu
-        cmake --build build_iwyu --parallel > /tmp/iwyu.out
-        cat /tmp/iwyu.out
-        if grep -Fq "include-what-you-use reported diagnostics" /tmp/iwyu.out; then exit 1; fi
+        ./cmake.py androidarm64 --iwyu
