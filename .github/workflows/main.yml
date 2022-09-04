@@ -45,6 +45,7 @@ jobs:
         cmake --build build --config Release --parallel
         pwd
         ls -lR
+        ls -l /Users/runner/work/actions-fiddling/actions-fiddling/include-what-you-use/build/bin/include-what-you-use
         echo "$RUNNER_WORKSPACE/include-what-you-use/build/bin/include-what-you-use" >> $GITHUB_PATH
 
     - name: Use Include what you use
