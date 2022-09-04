@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  clang_version: 13
+  clang_version: 14
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -37,7 +37,6 @@ jobs:
 
     - name: Build and install Include what you use
       run: |
-        brew install llvm@${{ env.clang_version }}
         git clone https://github.com/include-what-you-use/include-what-you-use.git
         cd include-what-you-use
         git checkout clang_${{ env.clang_version }}
