@@ -32,6 +32,9 @@ jobs:
     - name: Install Conan
       run: pip3 install conan --pre --upgrade
 
+    - name: Find LLVMConfig.cmake
+      run: find $(brew --prefix llvm@14) -name LLVMConfig.cmake
+
     - name: List lib dir
       run: ls -l /usr/lib
 
