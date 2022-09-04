@@ -32,12 +32,11 @@ jobs:
     - name: Install Conan
       run: pip3 install conan --pre --upgrade
 
-    - name: List bin dir
-      run: ls -l /usr/bin
+    - name: List lib dir
+      run: ls -l /usr/lib
 
     - name: Build and install Include what you use
       run: |
-        sudo apt-get install libclang-${{ env.clang_version }}-dev -y
         git clone https://github.com/include-what-you-use/include-what-you-use.git
         cd include-what-you-use
         git checkout clang_${{ env.clang_version }}
