@@ -32,11 +32,8 @@ jobs:
     - name: Install Conan
       run: pip3 install conan --pre --upgrade
 
-    - name: Find LLVMConfig.cmake
-      run: find $(brew --prefix llvm@14) -name LLVMConfig.cmake
-
-    - name: List llvm dir
-      run: ls -lR $(brew --prefix llvm@14)/lib
+    - name: Install required macOS packages
+        run: brew install ninja
 
     - name: Build and install Include what you use
       run: |
