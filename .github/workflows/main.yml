@@ -43,7 +43,7 @@ jobs:
         git clone https://github.com/include-what-you-use/include-what-you-use.git
         cd include-what-you-use
         git checkout clang_${{ env.clang_version }}
-        cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=$(brew --prefix llvm@14)/bin/clang -DCMAKE_CXX_COMPILER=$(brew --prefix llvm@14)/bin/clang++ -DCMAKE_PREFIX_PATH=$(brew --prefix llvm@14)/lib/llvm/lib/cmake -B build
+        cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=$(brew --prefix llvm@14)/bin/clang -DCMAKE_CXX_COMPILER=$(brew --prefix llvm@14)/bin/clang++ -DCMAKE_PREFIX_PATH=$(brew --prefix llvm@14)/llvm/lib/cmake -B build
         cmake --build build --config Release --parallel
         sudo cmake --install build
         include-what-you-use --help
