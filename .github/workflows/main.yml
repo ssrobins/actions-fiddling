@@ -33,7 +33,7 @@ jobs:
       run: pip3 install conan --pre --upgrade
 
     - name: Install required macOS packages
-        run: brew install ninja
+      run: brew install ninja
 
     - name: Build and install Include what you use
       run: |
