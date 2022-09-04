@@ -35,8 +35,8 @@ jobs:
     - name: Find LLVMConfig.cmake
       run: find $(brew --prefix llvm@14) -name LLVMConfig.cmake
 
-    - name: List lib dir
-      run: ls -l /usr/lib
+    - name: List llvm dir
+      run: ls -lR $(brew --prefix llvm@14)/llvm
 
     - name: Build and install Include what you use
       run: |
