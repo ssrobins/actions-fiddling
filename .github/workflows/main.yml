@@ -43,7 +43,7 @@ jobs:
         git checkout clang_${{ env.clang_version }}
         cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=$(brew --prefix llvm@${{ env.clang_version }})/bin/clang -DCMAKE_CXX_COMPILER=$(brew --prefix llvm@${{ env.clang_version }})/bin/clang++ -DCMAKE_PREFIX_PATH=$(brew --prefix llvm@${{ env.clang_version }})/lib/cmake -B build
         cmake --build build --config Release --parallel
-        sudo cmake --install build
+        echo "$RUNNER_WORKSPACE/include-what-you-use/bin/include-what-you-use" >> $GITHUB_PATH
         include-what-you-use --help
 
     - name: Use Include what you use
