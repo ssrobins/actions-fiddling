@@ -46,7 +46,7 @@ jobs:
         pwd
         ls -lR
         ls -l /Users/runner/work/actions-fiddling/actions-fiddling/include-what-you-use/build/bin/include-what-you-use
-        echo "$RUNNER_WORKSPACE/include-what-you-use/build/bin" >> $GITHUB_PATH
+        echo "$GITHUB_WORKSPACE/include-what-you-use/build/bin" >> $GITHUB_PATH
 
     - name: Use Include what you use
       run: |
