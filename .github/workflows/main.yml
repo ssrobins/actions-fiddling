@@ -11,19 +11,21 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: macos-12
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  builds:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macos-11
+            os: macos-11
+          - name: macos-12
+            os: macos-12
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    - name: Install Conan
+      - name: Install Conan
       run: |
         pip3 install conan --pre --upgrade
-        conan profile detect
+        which conan
