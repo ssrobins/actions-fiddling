@@ -37,5 +37,8 @@ jobs:
     - name: list pythons
       run: ls -lR /Library/Frameworks/Python.framework/Versions
 
+    - name: Set python
+    - run: echo "/Library/Frameworks/Python.framework/Versions/3.11" >> $GITHUB_PATH
+
     - name: conan version
       run: conan --version
