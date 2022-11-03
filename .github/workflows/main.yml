@@ -34,5 +34,8 @@ jobs:
     - name: pip show
       run: pip3 show conan
 
+    - name: list python
+      run: ls -l /Library/Frameworks/Python.framework/Versions/3.11/bin
+
     - name: conan version
       run: conan --version
