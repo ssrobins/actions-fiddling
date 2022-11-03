@@ -28,5 +28,5 @@ jobs:
     - name: Install Conan
       run: pip3 install conan --pre --upgrade
 
-    - name: List bin dir
-      run: ls -l /usr/local/bin
+    - name: Pip show
+      run: pip3 show conan
