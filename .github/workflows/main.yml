@@ -25,7 +25,7 @@ jobs:
           - name: macos-12
             os: macos-12
     steps:
-      - name: Install Conan
+    - name: Install Conan
       run: |
         pip3 install conan --pre --upgrade
         which conan
