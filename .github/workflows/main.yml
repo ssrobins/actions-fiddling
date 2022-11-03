@@ -34,5 +34,5 @@ jobs:
     - name: pip show
       run: pip3 show conan
 
-    - name: which conan
-      run: which conan
+    - name: conan version
+      run: conan --version
