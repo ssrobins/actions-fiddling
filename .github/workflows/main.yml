@@ -19,3 +19,16 @@ jobs:
 
       - name: Print environment variables
         run: env
+
+      - name: Install Conan
+        run: |
+          pip3 install conan --pre --upgrade
+          pip3 show conan
+
+      - name: which Conan
+        run: which conan
+        continue-on-error: true
+
+      - name: where Conan
+        run: where conan
+        continue-on-error: true
