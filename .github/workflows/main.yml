@@ -21,7 +21,7 @@ jobs:
         run: env
 
       - name: Python version
-        run: python --version
+        run: python3 --version
 
       - name: Print pip cache
         run: python3 -m pip cache dir
