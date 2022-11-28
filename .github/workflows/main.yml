@@ -20,5 +20,8 @@ jobs:
       - name: Print environment variables
         run: env
 
+      - name: Python version
+        run: python --version
+
       - name: Print pip cache
         run: python3 -m pip cache dir
