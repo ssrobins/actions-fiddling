@@ -22,3 +22,11 @@ jobs:
 
       - name: CMake configure
         run: cmake -G "Visual Studio 17 2022" -B build
+
+      - name: Install Conan
+        run: |
+          pip3 install conan --upgrade
+          conan profile detect
+
+      - name: Conan install
+        run: conan install . --build=missing -s os=Windows -s arch=x86 -s compiler=msvc -s compiler.version=193 -s compiler.update=6 -s compiler.runtime=static -s compiler.cppstd=17 -s build_type=Debug
