@@ -11,22 +11,18 @@ jobs:
   run:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
         os: [windows-2022]
     steps:
       - uses: actions/checkout@v3
-
-      - name: Print environment variables
-        run: env
-
-      - name: CMake configure
-        run: cmake -G "Visual Studio 17 2022" -B build
 
       - name: Install Conan
         run: |
           pip3 install conan --upgrade
           conan profile detect
 
-      - name: Conan install
+      - name: Conan install compiler.update=5
+        run: conan install --requires=fmt/9.1.0 --build=missing -s compiler=msvc -s compiler.version=193 -s compiler.update=5
+
+      - name: Conan install compiler.update=6
         run: conan install --requires=fmt/9.1.0 --build=missing -s compiler=msvc -s compiler.version=193 -s compiler.update=6
