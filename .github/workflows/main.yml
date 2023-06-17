@@ -22,7 +22,7 @@ jobs:
           conan profile detect
 
       - name: Print compiler dir contents
-        run: dir /s "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.36.32532/bin/Hostx64"
+        run: Get-ChildItem -Path "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.36.32532/bin/Hostx64" -Recurse
 
       - name: Conan install
         run: conan install --requires=fmt/9.1.0 --build=missing -s compiler=msvc -s compiler.version=193
