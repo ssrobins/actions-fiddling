@@ -29,4 +29,4 @@ jobs:
           conan profile detect
 
       - name: Conan install
-        run: conan install . --build=missing -s os=Windows -s compiler=msvc -s compiler.version=193 -s compiler.update=6
+        run: conan install --requires=fmt/9.1.0 --build=missing -s compiler=msvc -s compiler.version=193 -s compiler.update=6
