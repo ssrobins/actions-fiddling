@@ -23,4 +23,4 @@ jobs:
           conan profile detect
 
       - name: Conan use
-        run: conan install --requires=fmt/9.1.0 --build=missing -s compiler=msvc -s compiler.version=193
+        run: conan install --requires=fmt/9.1.0 --build=missing -s compiler=msvc -s compiler.version=193 -s compiler.update=7
