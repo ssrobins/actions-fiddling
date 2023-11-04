@@ -13,9 +13,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, ubuntu-20.04, ubuntu-18.04, windows-2022, windows-2019, macos-12, macos-11, macos-10.15]
+        os: [windows-2022, windows-2019]
     steps:
       - uses: actions/checkout@v3
 
-      - name: Print environment variables
-        run: env
+      - name: CMake project generation
+        run: cmake -B build
+
+      - name: Build
+        run: cmake --build build
