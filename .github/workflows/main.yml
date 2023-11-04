@@ -17,8 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: CMake project generation
-        run: cmake -A Win32 -B build
+      - name: Conan install
+        run: pip3 install conan --upgrade
 
-      - name: Build
-        run: cmake --build build
+      - name: Conan use
+        run: conan install --requires=fmt/9.1.0 --build=missing -s compiler=msvc -s compiler.version=193
